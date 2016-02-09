@@ -153,6 +153,7 @@ public class EmployeeController {
 	static  List<Entry<String, Integer>> getreadFile() throws IOException{
 		File file = new File("C://emp.txt");
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+		System.out.println("--------- emp.txt loaded successfully -----");
 		String line = null;
 		
 		while( (line = br.readLine())!= null ){

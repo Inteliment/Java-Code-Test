@@ -40,14 +40,15 @@ public class CorsFilter implements Filter {
 		response.setHeader("Access-Control-Allow-Headers", "Content-Type, x-xsrf-token,Origin, X-Requested-With, Accept,Authorization");
 		
 	     Set tokenlist= (Set)context.getAttribute("tokenlist");
-	     System.out.println("tokenlist size= "+tokenlist.size());
-	     if(authHeader!=null && tokenlist.contains(authHeader)){
+	     if(tokenlist !=null && authHeader!=null && tokenlist.contains(authHeader)){
+	    	 System.out.println("tokenlist size= "+tokenlist.size());
 	    	 try{
 	    		 TokenService tokenService= ServiceObject.getTokenObject();
 	    		 tokenService.parseJWT(authHeader);
 	    		 chain.doFilter(req, res);
 	    	 }catch(Exception ex){
 	    		 response.getWriter().println(" your token is expired so login to http://host/Inteliment/rest/person/login to create the token ");
+	    		 tokenlist.remove(authHeader);
 	    	 }
 	     }else{
 	    	 response.getWriter().println("Invalid Login (Userid and Pwd) please use the link http://host/Inteliment/rest/person/login");

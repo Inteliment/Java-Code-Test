@@ -1,8 +1,5 @@
 package com.tiple.spring.service;
 
-import java.util.List;
-
-import com.tiple.spring.model.Person;
 
 public interface TokenService {
 

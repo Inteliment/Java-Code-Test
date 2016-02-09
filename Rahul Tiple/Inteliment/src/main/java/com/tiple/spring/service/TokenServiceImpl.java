@@ -7,16 +7,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import java.security.Key;
 import java.util.Date;
-import java.util.List;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.tiple.spring.dao.PersonDAO;
-import com.tiple.spring.model.Person;
 
 @Service
 public class TokenServiceImpl implements TokenService {
